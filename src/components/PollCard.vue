@@ -1,8 +1,6 @@
 <template>
-
   <b-card
     :title=poll_title
-    style="max-width: 30rem"
   >
     <b-card-text>
       {{ poll_description }}
@@ -23,23 +21,23 @@
     <template #footer>
       <b-button block>Votar</b-button>
     </template>
-
   </b-card>
-
 </template>
 
 <script>
-  export default {
-    name: 'PollCard',
-    props: {
-      poll_title: String,
-      poll_description: String,
-      options: Array,
-    },
-    data() {
-      return {
-        selected: null,
-      }
+export default {
+  name: 'PollCard',
+  props: {
+    poll_id: String,
+    poll_title: String,
+    poll_description: String,
+    options: Array,
+  },
+
+  data() {
+    return {
+      selected: null,
     }
-  }
+  },
+}
 </script>

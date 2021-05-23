@@ -1,10 +1,15 @@
 <template>
-  <b-container>
-    <PollCard
-      poll_title="Title"
-      poll_description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultricies ante nec dolor finibus, vitae rhoncus metus placerat."
-      :options=options
-    />
+  <b-container fluid>
+    <b-row align-h="center" v-for="poll in polls" v-bind:key="poll.id">
+      <b-col cols="5">
+        <PollCard
+          :poll_id="poll.id"
+          :poll_title="poll.title"
+          :poll_description="poll.description"
+          :options="poll.options"
+        />
+      </b-col>
+    </b-row>
   </b-container>
 </template>
 
@@ -17,24 +22,32 @@ export default {
   components: {
     PollCard
   },
+
   data() {
     return {
-      options: [
-        {
-          text: 'Opção A',
-          value: 'id1'
-        },
-        {
-          text: 'Opção B',
-          value: 'id2'
-        }
-      ]
+      polls: [],
     }
   },
+
   created() {
     axios.get('http://127.0.0.1:8000/api/polls')
     .then((response) => {
-      console.log(response.data)
+      // Formatar o objeto options no formato que o b-form-radio espera
+      let polls = []
+      response.data.forEach(element => {
+        let poll = {}
+        poll.title = element.title
+        poll.description = element.description
+        poll.options = []
+        element.options.forEach(option => {
+          poll.options.push({
+            text: option.description,
+            value: option.id
+          })
+        })
+        polls.push(poll)
+      })
+      this.polls = polls
     })
     .catch((error) => {
       console.log(error.response.data.detail);
