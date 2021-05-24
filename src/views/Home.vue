@@ -1,7 +1,24 @@
 <template>
   <b-container fluid>
-    <b-row align-h="center" v-for="poll in polls" v-bind:key="poll.id">
+
+    <b-row align-h="center">
+      <b-col>
+        <b-img
+          :src="require('../assets/images/logo-publico-geral.png')"
+          width="500px"
+          center
+        ></b-img>
+      </b-col>
+    </b-row>
+
+    <b-row align-h="center">
       <b-col cols="5">
+        <h1>Enquetes ativas</h1>
+      </b-col>
+    </b-row>
+
+    <b-row class="mb-3" align-h="center" v-for="poll in polls" v-bind:key="poll.id">
+      <b-col cols="6">
         <PollCard
           :poll_id="poll.id"
           :poll_title="poll.title"
@@ -12,6 +29,14 @@
     </b-row>
   </b-container>
 </template>
+
+<style scoped>
+h1 {
+  text-align: center;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+</style>
 
 <script>
 import axios from "axios"
