@@ -51,6 +51,7 @@ export default {
         console.log(response.data)
       })
       .catch((error) => {
+        console.log("Erro ao enviar voto");
         console.log(error.response.data.detail);
       })
     }

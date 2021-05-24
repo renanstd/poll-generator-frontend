@@ -51,6 +51,7 @@ export default {
       this.polls = polls
     })
     .catch((error) => {
+      console.log("Erro ao coletar enquetes");
       console.log(error.response.data.detail);
     })
   }
