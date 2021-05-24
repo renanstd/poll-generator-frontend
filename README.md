@@ -1,5 +1,9 @@
 # poll-generator-frontend
 
+Frontend do app de criação de enquetes.
+
+Este front consome dados [deste](https://github.com/renanstd/poll-generator) backend.
+
 ## Project setup
 ```
 npm install
