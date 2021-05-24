@@ -19,12 +19,14 @@
     </b-form-group>
 
     <template #footer>
-      <b-button block>Votar</b-button>
+      <b-button block v-on:click="vote">Votar</b-button>
     </template>
   </b-card>
 </template>
 
 <script>
+import axios from "axios"
+
 export default {
   name: 'PollCard',
   props: {
@@ -39,5 +41,19 @@ export default {
       selected: null,
     }
   },
+
+  methods: {
+    vote: function() {
+      const selected_option = this.selected
+      const path = process.env.VUE_APP_API_URL + `/options/${selected_option}/vote/`
+      axios.get(path)
+      .then((response) => {
+        console.log(response.data)
+      })
+      .catch((error) => {
+        console.log(error.response.data.detail);
+      })
+    }
+  }
 }
 </script>

@@ -30,7 +30,8 @@ export default {
   },
 
   created() {
-    axios.get('http://127.0.0.1:8000/api/polls')
+    const path = process.env.VUE_APP_API_URL + "/polls"
+    axios.get(path)
     .then((response) => {
       // Formatar o objeto options no formato que o b-form-radio espera
       let polls = []
