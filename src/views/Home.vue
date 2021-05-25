@@ -11,6 +11,24 @@
       </b-col>
     </b-row>
 
+    <b-row align-h="center" class="text-center">
+      <b-col cols="1">
+        <a href="https://twitter.com/PublicoGeral">
+          <b-icon variant="dark" font-scale="2" icon="twitter"></b-icon>
+        </a>
+      </b-col>
+      <b-col cols="1">
+        <a href="https://www.instagram.com/publicogeraloficial/">
+          <b-icon variant="dark" font-scale="2" icon="instagram"></b-icon>
+        </a>
+      </b-col>
+      <b-col cols="1">
+        <a href="https://www.facebook.com/publicogeralof">
+          <b-icon variant="dark" font-scale="2" icon="facebook"></b-icon>
+        </a>
+      </b-col>
+    </b-row>
+
     <b-row align-h="center">
       <b-col cols="5">
         <h1>Enquetes ativas</h1>
@@ -31,10 +49,16 @@
 </template>
 
 <style scoped>
+@font-face {
+  font-family: "Reckoner";
+  src: local("Reckoner"), url(../assets/fonts/Reckoner.ttf) format("truetype");
+}
 h1 {
   text-align: center;
   color: white;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Reckoner";
+  text-shadow: 2px 2px 5px black;
+  margin-top: 30px;
 }
 </style>
 

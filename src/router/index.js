@@ -9,13 +9,13 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
   },
   {
     path: '/admin',
     name: 'Admin',
-    component: Admin
-  },
+    component: Admin,
+  }
 ]
 
 const router = new VueRouter({

@@ -1,27 +1,33 @@
 <template>
-  <b-card
-    :title=poll_title
+  <b-overlay
+    :show="loading"
   >
-    <b-card-text>
-      {{ poll_description }}
-    </b-card-text>
+    <b-card
+      :title=poll_title
+    >
+      <b-card-text>
+        {{ poll_description }}
+      </b-card-text>
 
-    <b-form-group>
-      <b-form-radio-group
-        id="btn-radios-3"
-        v-model="selected"
-        :options=options
-        name="radio-btn-stacked"
-        button-variant="outline-primary"
-        buttons
-        stacked
-      ></b-form-radio-group>
-    </b-form-group>
+      <b-form-group>
+        <b-form-radio-group
+          id="btn-radios"
+          v-model="selected"
+          :options="options"
+          name="radios-btn-stacked"
+          button-variant="danger"
+          buttons
+          stacked
+          class="container-fluid"
+        ></b-form-radio-group>
+      </b-form-group>
 
-    <template #footer>
-      <b-button block v-on:click="vote">Votar</b-button>
-    </template>
-  </b-card>
+      <template #footer>
+        <b-button variant="dark" v-on:click="vote">Votar</b-button>
+      </template>
+
+    </b-card>
+  </b-overlay>
 </template>
 
 <script>
@@ -39,20 +45,24 @@ export default {
   data() {
     return {
       selected: null,
+      loading: false,
     }
   },
 
   methods: {
     vote: function() {
+      this.loading = true
       const selected_option = this.selected
       const path = process.env.VUE_APP_API_URL + `/options/${selected_option}/vote/`
       axios.get(path)
       .then((response) => {
         console.log(response.data)
+        this.loading = false
       })
       .catch((error) => {
         console.log("Erro ao enviar voto");
         console.log(error.response.data.detail);
+        this.loading = false
       })
     }
   }
