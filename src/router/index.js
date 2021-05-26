@@ -12,13 +12,14 @@ const routes = [
     component: Home,
   },
   {
-    path: '/admin',
+    path: '/master',
     name: 'Admin',
     component: Admin,
   }
 ]
 
 const router = new VueRouter({
+  mode: 'history',
   routes
 })
 
