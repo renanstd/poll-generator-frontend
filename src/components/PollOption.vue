@@ -1,8 +1,9 @@
 <template>
-  <b-input-group prepend="Opção">
+  <b-input-group :prepend="index">
     <b-form-input
       v-model="description"
       placeholder="Digite a opção..."
+      @change="option_changed"
     ></b-form-input>
   </b-input-group>
 </template>
@@ -14,14 +15,16 @@ export default {
     index: Number,
   },
 
-  created() {
-    console.log(this.index);
-  },
-
   data() {
     return {
-      description: null,
+      description: '',
     }
-  }
+  },
+
+  methods: {
+    option_changed() {
+      this.$emit('description_changed', this.description)
+    }
+  },
 }
 </script>

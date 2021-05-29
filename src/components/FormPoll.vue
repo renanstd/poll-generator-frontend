@@ -47,7 +47,11 @@
     </b-form-group>
 
     <div v-for="n in options" :key="n">
-      <component v-bind:is="currentComponent" v-bind="{index: n}">
+      <component
+        v-bind:is="currentComponent"
+        v-bind="{index: n}"
+        @description_changed="description => {form.options.push(description)}"
+      >
       </component>
     </div>
 
@@ -74,6 +78,7 @@ export default {
       form: {
         title: '',
         description: '',
+        options: [],
       },
       options: 1,
       currentComponent: PollOption
@@ -81,18 +86,22 @@ export default {
   },
 
   created() {
-
   },
 
   methods: {
     onSubmit(event) {
       event.preventDefault()
       const path = process.env.VUE_APP_API_URL + "/polls/"
+      let formated_options = []
+      this.form.options.forEach(option => {
+        formated_options.push({description: option})
+      });
       const data = {
         title: this.form.title,
         description: this.form.description,
-        options: [],
+        options: formated_options,
       }
+      console.log(data);
       axios.post(path, data)
       .then((response) => {
         console.log(response);
@@ -105,6 +114,7 @@ export default {
       event.preventDefault()
       this.form.title = ''
       this.form.description = ''
+      this.form.options = []
       this.options = 1
     },
     add_option(event) {
@@ -113,7 +123,9 @@ export default {
     },
     sub_option(event) {
       event.preventDefault()
-      this.options -= 1
+      if (this.options > 1) {
+        this.options -= 1
+      }
     }
   }
 }
