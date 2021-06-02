@@ -29,6 +29,7 @@
       </b-col>
     </b-row>
 
+    <br>
     <b-row align-h="center">
       <b-col cols="5">
         <h1>Enquetes ativas</h1>

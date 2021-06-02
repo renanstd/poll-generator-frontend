@@ -1,6 +1,10 @@
 <template>
   <b-form @submit="onSubmit" @reset="onReset">
 
+    <b-modal id="modal-success" title="Enquete criada">
+      <p class="my-4">Enquete criada com sucesso!</p>
+    </b-modal>
+
     <b-form-group
       id="input-group-1"
       label="Título:"
@@ -55,6 +59,7 @@
       </component>
     </div>
 
+    <br>
     <b-button type="submit" variant="dark">Salvar</b-button>
     <b-button type="reset">Resetar</b-button>
 
@@ -98,10 +103,9 @@ export default {
         description: this.form.description,
         options: formated_options,
       }
-      console.log(data);
       axios.post(path, data)
-      .then((response) => {
-        console.log(response)
+      .then(() => {
+        this.$bvModal.show('modal-success')
         this.onReset(null)
       })
       .catch((error) => {
