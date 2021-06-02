@@ -5,6 +5,29 @@
     <b-card
       :title=poll_title
     >
+
+      <b-alert
+        :show="sucess_alert_timer"
+        dismissible
+        variant="success"
+        fade
+        @dismissed="sucess_alert_timer=0"
+        @dismiss-count-down="success_countdown_changed"
+      >
+        Voto registrado com sucesso
+      </b-alert>
+
+      <b-alert
+        :show="already_voted_timer"
+        dismissible
+        variant="info"
+        fade
+        @dismissed="already_voted_timer=0"
+        @dismiss-count-down="info_countdown_changed"
+      >
+        Você já votou nessa enquete, apenas 1 voto por pessoa é permitido
+      </b-alert>
+
       <b-card-text>
         {{ poll_description }}
       </b-card-text>
@@ -44,6 +67,9 @@ export default {
 
   data() {
     return {
+      alert_seconds: 5,
+      sucess_alert_timer: 0,
+      already_voted_timer: 0,
       selected: null,
       loading: false,
     }
@@ -57,7 +83,12 @@ export default {
       const session_id = this.$cookies.get('session_id')
       axios.post(path, {session_id})
       .then((response) => {
-        console.log(response.data)
+        const status_code = response.status
+        if (status_code === 200) {
+          this.show_success_alert()
+        } else {
+          this.show_already_voted_alert()
+        }
         this.loading = false
       })
       .catch((error) => {
@@ -65,7 +96,23 @@ export default {
         console.log(error.response.data.detail);
         this.loading = false
       })
-    }
+    },
+
+    success_countdown_changed(sucess_alert_timer) {
+      this.sucess_alert_timer = sucess_alert_timer
+    },
+
+    info_countdown_changed(info_alert_timer) {
+      this.already_voted_timer = info_alert_timer
+    },
+
+    show_success_alert() {
+      this.sucess_alert_timer = this.alert_seconds
+    },
+
+    show_already_voted_alert() {
+      this.already_voted_timer = this.alert_seconds
+    },
   }
 }
 </script>
