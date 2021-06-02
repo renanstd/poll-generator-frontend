@@ -55,8 +55,8 @@
       </component>
     </div>
 
-    <b-button type="submit" variant="dark">Submit</b-button>
-    <b-button type="reset">Reset</b-button>
+    <b-button type="submit" variant="dark">Salvar</b-button>
+    <b-button type="reset">Resetar</b-button>
 
   </b-form>
 </template>
@@ -85,9 +85,6 @@ export default {
     }
   },
 
-  created() {
-  },
-
   methods: {
     onSubmit(event) {
       event.preventDefault()
@@ -104,14 +101,17 @@ export default {
       console.log(data);
       axios.post(path, data)
       .then((response) => {
-        console.log(response);
+        console.log(response)
+        this.onReset(null)
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error)
       })
     },
     onReset(event) {
-      event.preventDefault()
+      if (event) {
+        event.preventDefault()
+      }
       this.form.title = ''
       this.form.description = ''
       this.form.options = []
