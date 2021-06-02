@@ -54,7 +54,8 @@ export default {
       this.loading = true
       const selected_option = this.selected
       const path = process.env.VUE_APP_API_URL + `/options/${selected_option}/vote/`
-      axios.get(path)
+      const session_id = this.$cookies.get('session_id')
+      axios.post(path, {session_id})
       .then((response) => {
         console.log(response.data)
         this.loading = false

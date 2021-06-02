@@ -65,6 +65,7 @@ export default {
   },
 
   created() {
+    this.check_or_create_cookies()
     const path = process.env.VUE_APP_API_URL + "/polls"
     axios.get(path)
     .then((response) => {
@@ -85,10 +86,19 @@ export default {
       })
       this.polls = polls
     })
-    .catch((error) => {
+    .catch(() => {
       console.log("Erro ao coletar enquetes");
-      console.log(error.response.data.detail);
     })
+  },
+
+  methods: {
+    check_or_create_cookies() {
+      // Verifica/cria cookie de sessão para o user atual
+      const cookie = this.$cookies.get('session_id')
+      if (cookie === null) {
+        this.$cookies.set('session_id', Date.now())
+      }
+    }
   }
 }
 </script>
