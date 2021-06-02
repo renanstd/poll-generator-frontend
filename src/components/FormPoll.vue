@@ -48,7 +48,7 @@
 
     <div v-for="n in options" :key="n">
       <component
-        v-bind:is="currentComponent"
+        v-bind:is="current_component"
         v-bind="{index: n}"
         @description_changed="description => {form.options.push(description)}"
       >
@@ -81,7 +81,7 @@ export default {
         options: [],
       },
       options: 1,
-      currentComponent: PollOption
+      current_component: PollOption
     }
   },
 

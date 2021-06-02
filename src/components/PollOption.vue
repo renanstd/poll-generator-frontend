@@ -1,5 +1,5 @@
 <template>
-  <b-input-group :prepend="index">
+  <b-input-group :prepend="prepend_label">
     <b-form-input
       v-model="description"
       placeholder="Digite a opção..."
@@ -17,8 +17,13 @@ export default {
 
   data() {
     return {
+      prepend_label: '',
       description: '',
     }
+  },
+
+  created() {
+    this.prepend_label = `Opção ${this.index}`
   },
 
   methods: {
