@@ -8,8 +8,9 @@
     <!-- Tudo que está aqui, será "fechado" quando a navbar fica pequena -->
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
-        <b-nav-item href="#">Criação</b-nav-item>
-        <b-nav-item href="#">Resultados</b-nav-item>
+        <b-nav-item href="#/">Home</b-nav-item>
+        <b-nav-item href="#/master">Criação</b-nav-item>
+        <b-nav-item href="#/master/results">Resultados</b-nav-item>
       </b-navbar-nav>
 
       <!-- Itens alinhados a direita da navbar -->

@@ -43,7 +43,10 @@ export default {
     return {
       polls: [],
       loading: false,
-      fields: ['title', 'actions'],
+      fields: [
+        {key: 'title', label: 'Título'},
+        {key: 'actions', label: 'Ações'}
+      ],
     }
   },
 

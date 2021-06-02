@@ -108,6 +108,7 @@ export default {
         console.log(error)
       })
     },
+
     onReset(event) {
       if (event) {
         event.preventDefault()
@@ -117,10 +118,12 @@ export default {
       this.form.options = []
       this.options = 1
     },
+
     add_option(event) {
       event.preventDefault()
       this.options += 1
     },
+
     sub_option(event) {
       event.preventDefault()
       if (this.options > 1) {
