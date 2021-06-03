@@ -8,6 +8,7 @@
 #app {
   background-color: #f9485a;
   min-height: 100vh;
+  min-width: 70vh;
 }
 @font-face {
   font-family: "Reckoner";
