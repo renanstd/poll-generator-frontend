@@ -29,6 +29,8 @@ npm run lint
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
+## Screenshots
+
 ![polls](/images/poll_create.png)
 
 ![polls](/images/results.png)
