@@ -107,6 +107,7 @@ export default {
       .then(() => {
         this.$bvModal.show('modal-success')
         this.onReset(null)
+        this.$emit('form_submited')
       })
       .catch((error) => {
         console.log(error)
