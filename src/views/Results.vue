@@ -3,7 +3,7 @@
     <NavBar/>
     <b-row align-h="center" class="text-center">
       <b-col cols="5">
-        <h1>Resultados</h1>
+        <h1>Resultados ao vivo</h1>
       </b-col>
     </b-row>
 
