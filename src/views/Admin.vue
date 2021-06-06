@@ -43,11 +43,21 @@
 
           <template #cell(actions)="poll">
             <b-button
+              v-if="poll.item.active"
               variant="primary"
               @click="close_poll(poll.item.id)"
             >
               Encerrar
             </b-button>
+
+            <b-button
+              v-if="!poll.item.active"
+              variant="primary"
+              @click="reopen_poll(poll.item.id)"
+            >
+              Reabrir
+            </b-button>
+
             <b-button
               variant="danger"
               @click="delete_poll(poll.item.id)"
@@ -103,6 +113,7 @@ export default {
           let poll = {}
           poll.title = element.title
           poll.id = element.id
+          poll.active = element.active
           polls.push(poll)
         })
         this.polls = polls
@@ -128,6 +139,17 @@ export default {
       this.loading = true
       const path = process.env.VUE_APP_API_URL + "/polls/" + poll_id + '/'
       const data = {active: false}
+      axios.patch(path,data)
+      .then(() => {
+        this.get_data()
+      })
+      this.loading = false
+    },
+
+    reopen_poll(poll_id) {
+      this.loading = true
+      const path = process.env.VUE_APP_API_URL + "/polls/" + poll_id + '/'
+      const data = {active: true}
       axios.patch(path,data)
       .then(() => {
         this.get_data()

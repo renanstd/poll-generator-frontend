@@ -36,7 +36,12 @@
       </b-col>
     </b-row>
 
-    <b-row class="mb-3" align-h="center" v-for="poll in polls" v-bind:key="poll.id">
+    <b-row
+      class="mb-3"
+      align-h="center"
+      v-for="poll in polls"
+      v-bind:key="poll.id"
+    >
       <b-col cols="10">
         <PollCard
           :poll_id="poll.id"
