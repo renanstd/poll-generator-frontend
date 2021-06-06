@@ -70,7 +70,7 @@ export default {
 
   methods: {
     get_data() {
-      const path = process.env.VUE_APP_API_URL + "/polls"
+      const path = process.env.VUE_APP_API_URL + "/polls?active=1"
       axios.get(path)
       .then((response) => {
         this.polls = response.data
