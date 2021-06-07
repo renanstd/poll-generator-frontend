@@ -16,6 +16,18 @@ O objetivo era ter uma área **pública**, onde os usuários votem nas enquetes 
 
 ![polls](/images/results.png)
 
+## O que usei
+
+A seguinte stack foi utilizada neste projeto:
+
+- [Vue](https://vuejs.org/)
+- [Vue CLI](https://cli.vuejs.org/)
+- [Vue Router](https://router.vuejs.org/)
+- [Vue Cookies](https://www.npmjs.com/package/vue-cookies)
+- [Bootstrap Vue](https://bootstrap-vue.org/)
+- [Axios](https://www.npmjs.com/package/axios)
+- [Express](https://www.npmjs.com/package/express)
+
 ## Project setup
 ```
 npm install
