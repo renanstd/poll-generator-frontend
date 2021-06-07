@@ -36,6 +36,14 @@
       </b-col>
     </b-row>
 
+    <b-row align-h="center" v-if="polls.length === 0">
+      <b-col cols="10">
+        <b-alert show variant="danger">
+          Nenhuma enquete criada até o momento
+        </b-alert>
+      </b-col>
+    </b-row>
+
     <b-row
       class="mb-3"
       align-h="center"
