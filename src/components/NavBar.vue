@@ -15,10 +15,22 @@
 
       <!-- Itens alinhados a direita da navbar -->
       <b-navbar-nav class="ml-auto">
-        <b-nav-item-dropdown text="Mestre" right>
-          <b-dropdown-item href="#">Sair</b-dropdown-item>
-        </b-nav-item-dropdown>
+        <b-button @click="logout">Sair</b-button>
       </b-navbar-nav>
     </b-collapse>
   </b-navbar>
 </template>
+
+<script>
+import router from '../router'
+
+export default {
+  methods: {
+    logout(event) {
+      event.preventDefault()
+      this.$cookies.remove("token")
+      router.push('/login')
+    }
+  }
+}
+</script>

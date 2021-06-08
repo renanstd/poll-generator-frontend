@@ -75,6 +75,7 @@
 
 <script>
 import axios from "axios"
+import router from '../router'
 import NavBar from '@/components/NavBar.vue'
 import FormPoll from '@/components/FormPoll.vue'
 
@@ -120,7 +121,7 @@ export default {
         this.loading = false
       })
       .catch(() => {
-        console.log("Erro ao coletar enquetes");
+        console.log("Erro ao coletar enquetes")
         this.loading = false
       })
     },
@@ -128,9 +129,21 @@ export default {
     delete_poll(poll_id) {
       this.loading = true
       const path = process.env.VUE_APP_API_URL + "/polls/" + poll_id
-      axios.delete(path)
+      const token = this.$cookies.get("token")
+      const headers = {'Authorization': `Bearer ${token}`}
+
+      axios.delete(path, {headers})
       .then(() => {
         this.get_data()
+      })
+      .catch((error) => {
+        const status_code = error.response.status
+        // Redirecionar para tela de login caso a sessão tenha expirado
+        if (status_code === 401) {
+          router.push('/login')
+        } else {
+          console.log(error)
+        }
       })
       this.loading = false
     },
@@ -139,9 +152,21 @@ export default {
       this.loading = true
       const path = process.env.VUE_APP_API_URL + "/polls/" + poll_id + '/'
       const data = {active: false}
-      axios.patch(path,data)
+      const token = this.$cookies.get("token")
+      const headers = {'Authorization': `Bearer ${token}`}
+
+      axios.patch(path,data, {headers})
       .then(() => {
         this.get_data()
+      })
+      .catch((error) => {
+        const status_code = error.response.status
+        // Redirecionar para tela de login caso a sessão tenha expirado
+        if (status_code === 401) {
+          router.push('/login')
+        } else {
+          console.log(error)
+        }
       })
       this.loading = false
     },
@@ -150,9 +175,21 @@ export default {
       this.loading = true
       const path = process.env.VUE_APP_API_URL + "/polls/" + poll_id + '/'
       const data = {active: true}
-      axios.patch(path,data)
+      const token = this.$cookies.get("token")
+      const headers = {'Authorization': `Bearer ${token}`}
+
+      axios.patch(path,data, {headers})
       .then(() => {
         this.get_data()
+      })
+      .catch((error) => {
+        const status_code = error.response.status
+        // Redirecionar para tela de login caso a sessão tenha expirado
+        if (status_code === 401) {
+          router.push('/login')
+        } else {
+          console.log(error)
+        }
       })
       this.loading = false
     }

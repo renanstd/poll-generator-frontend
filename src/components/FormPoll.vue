@@ -75,6 +75,7 @@
 
 <script>
 import axios from "axios"
+import router from '../router'
 import PollOption from '@/components/PollOption.vue'
 
 export default {
@@ -94,23 +95,34 @@ export default {
     onSubmit(event) {
       event.preventDefault()
       const path = process.env.VUE_APP_API_URL + "/polls/"
+      const token = this.$cookies.get("token")
+      const headers = {'Authorization': `Bearer ${token}`}
+
       let formated_options = []
       this.form.options.forEach(option => {
         formated_options.push({description: option})
       });
+
       const data = {
         title: this.form.title,
         description: this.form.description,
         options: formated_options,
       }
-      axios.post(path, data)
+
+      axios.post(path, data, {headers})
       .then(() => {
         this.$bvModal.show('modal-success')
         this.onReset(null)
         this.$emit('form_submited')
       })
       .catch((error) => {
-        console.log(error)
+        const status_code = error.response.status
+        // Redirecionar para tela de login caso a sessão tenha expirado
+        if (status_code === 401) {
+          router.push('/login')
+        } else {
+          console.log(error)
+        }
       })
     },
 
