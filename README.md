@@ -8,7 +8,7 @@ Este frontend consome dados do meu [Poll Generator](https://github.com/renanstd/
 
 Este projeto foi desenvolvido no intuito de ajudar meus amigos do canal [Público Geral](https://www.instagram.com/publicogeraloficial/) na criação de enquetes durante sessões de RPG transmitidas ao vivo pelo [Youtube](https://www.youtube.com/channel/UCiX7AWd2w9mC-iaZRFfUs_w).
 
-O objetivo era ter uma área **pública**, onde os usuários votem nas enquetes ativas, e uma área exclusiva do **mestre**, onde é possível criar, encerrar, e reativar enquetes, assim como acompanhar as votações em tempo real.
+O objetivo era ter uma área **pública**, onde os usuários votem nas enquetes ativas, e uma área exclusiva do **mestre**, onde é possível, após login, criar, encerrar, e reativar enquetes, assim como acompanhar as votações em tempo real.
 
 ![polls](/images/polls.png)
 
