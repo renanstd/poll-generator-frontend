@@ -42,28 +42,30 @@
           </template>
 
           <template #cell(actions)="poll">
-            <b-button
-              v-if="poll.item.active"
-              variant="primary"
-              @click="close_poll(poll.item.id)"
-            >
-              Encerrar
-            </b-button>
+            <b-button-group>
+              <b-button
+                v-if="poll.item.active"
+                variant="primary"
+                @click="close_poll(poll.item.id)"
+              >
+                Encerrar
+              </b-button>
 
-            <b-button
-              v-if="!poll.item.active"
-              variant="primary"
-              @click="reopen_poll(poll.item.id)"
-            >
-              Reabrir
-            </b-button>
+              <b-button
+                v-if="!poll.item.active"
+                variant="primary"
+                @click="reopen_poll(poll.item.id)"
+              >
+                Reabrir
+              </b-button>
 
-            <b-button
-              variant="danger"
-              @click="delete_poll(poll.item.id)"
-            >
-              Apagar
-            </b-button>
+              <b-button
+                variant="danger"
+                @click="delete_poll(poll.item.id)"
+              >
+                Apagar
+              </b-button>
+            </b-button-group>
           </template>
 
         </b-table>
