@@ -21,7 +21,7 @@ const routes = [
     name: 'Login',
     component: Login,
     meta: {
-      title: 'Área do mestre - Login'
+      title: 'Área admin - Login'
     }
   },
   {

@@ -1,6 +1,6 @@
 <template>
   <b-navbar toggleable="lg" type="dark" variant="dark">
-    <b-navbar-brand>Área do Mestre</b-navbar-brand>
+    <b-navbar-brand>Área Admin</b-navbar-brand>
 
     <!-- Botão de toggle da navbar -->
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
